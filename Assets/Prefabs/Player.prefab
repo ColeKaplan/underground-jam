@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6071991770057649420}
   - component: {fileID: 187047744822393732}
   - component: {fileID: 2810188259490925387}
+  - component: {fileID: 7120712300150787702}
   - component: {fileID: 8685004475918557185}
   - component: {fileID: 1995215919790070304}
   m_Layer: 0
@@ -105,11 +106,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 10
+  coyoteTimeDuration: 0.1
+  jumpCutMultiplier: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 2421302758003980174}
   groundCheckRadius: 0.2
+--- !u!114 &7120712300150787702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257425950623584481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5b6cc38c15a6747a47ad26a875d1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yThreshold: -20
 --- !u!70 &8685004475918557185
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -120,7 +136,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 49f7a270c28f216469163fab3a01160c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -163,7 +179,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 49f7a270c28f216469163fab3a01160c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
