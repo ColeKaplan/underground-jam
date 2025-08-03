@@ -1,13 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
+    public static AudioManager Instance;
 
     public AudioSource musicSource;
     public AudioClip musicClip;
@@ -16,9 +13,9 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -43,7 +40,8 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="clip">Clip to play</param>
     /// <param name="loop">Whether to play once or repeatedly until calling StopSFX(clip)</param>
-    public void PlaySFX(AudioClip clip, bool loop = false)
+    /// <param name="volume">Float mult of how loud the sound is. 0-1 scale.</param>
+    public void PlaySFX(AudioClip clip, bool loop = false, float volume = 1f)
     {
         if (clip == null)
         {
@@ -53,6 +51,7 @@ public class AudioManager : MonoBehaviour
             {
                 AudioSource src = gameObject.AddComponent<AudioSource>();
                 src.clip = clip;
+                src.volume *= volume;
                 src.Play();
 
                 StartCoroutine(DestroyTempAudioSource(src));
@@ -63,6 +62,7 @@ public class AudioManager : MonoBehaviour
             src.clip = clip;
             clipSourceMap[clip.name] = src;
             src.loop = true;
+            src.volume *= volume;
             src.Play();
         }
     }
