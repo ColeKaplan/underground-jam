@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         originalGravity = rb.gravityScale;
-        moveAction = InputSystem.actions.FindAction("Move");
+        moveAction = InputSystem.actions.FindAction("PlayerMove");
         jumpAction = InputSystem.actions.FindAction("Jump");
     }
 

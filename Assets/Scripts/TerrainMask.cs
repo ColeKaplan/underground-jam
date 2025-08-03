@@ -55,7 +55,7 @@ public class TerrainMask : MonoBehaviour
 
         var paths = MarchingSquares.Generate(binary, 1f / readableTexture.width);
         polyCollider.pathCount = paths.Count;
-        Debug.Log($"Updating collider with {paths.Count} paths");
+        // Debug.Log($"Updating collider with {paths.Count} paths");
         for (int i = 0; i < paths.Count; i++)
         {
             polyCollider.SetPath(i, paths[i]);
