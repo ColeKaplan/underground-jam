@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 759119456}
   m_Layer: 0
   m_Name: Mole
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -338,7 +338,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -548,6 +548,7 @@ GameObject:
   - component: {fileID: 1731425713}
   - component: {fileID: 1731425717}
   - component: {fileID: 1731425718}
+  - component: {fileID: 1731425719}
   m_Layer: 0
   m_Name: Dirt
   m_TagString: Untagged
@@ -562,7 +563,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731425712}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e94a4a41182344c287d7a7e182353a9, type: 3}
   m_Name: 
@@ -768,6 +769,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1731425719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731425712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca43941040cbb491983b5cd1f8cb8afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maskRT: {fileID: 8400000, guid: ea76f3cd431114bf49b6d1c5cea176cd, type: 2}
+  defaultMask: {fileID: 2800000, guid: afeacf88e9a2a47ba8f876c16fb15739, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
