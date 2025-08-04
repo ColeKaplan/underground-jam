@@ -33,9 +33,10 @@ public class Dig : MonoBehaviour
 
     void FixedUpdate()
     {
+        int j = 0;
         foreach (Collider2D collider in colliderArc)
         {
-            print("collider: " + collider.name);
+            print("collider: " + j++);
             int count = collider.Overlap(groundFilter, results);
 
             for (int i = 0; i < count; i++)
@@ -44,7 +45,7 @@ public class Dig : MonoBehaviour
 
                 // Check if hit object or its parent is the player
                 Transform hitTransform = hit.transform;
-                bool isPlayer = hitTransform.CompareTag("Player") || 
+                bool isPlayer = hitTransform.CompareTag("Player") ||
                                 (hitTransform.parent != null && hitTransform.parent.CompareTag("Player"));
 
                 if (isPlayer)

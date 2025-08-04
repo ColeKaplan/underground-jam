@@ -7,7 +7,7 @@ public class LevelGoal : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            int newScene = SceneManager.GetActiveScene().buildIndex + 1;
+            int newScene = SceneManager.GetActiveScene().buildIndex - 1;
             if (SceneManager.sceneCount  > newScene)
             {
                 SceneManager.LoadScene(newScene);

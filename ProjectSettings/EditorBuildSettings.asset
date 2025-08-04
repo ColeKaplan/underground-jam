@@ -5,12 +5,24 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/TitleScene.unity
+  - enabled: 0
+    path: Assets/Scenes/AriaScene.unity
     guid: 275680f0f62c74f3bb5cf1dbc1a08d6d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ColeScene.unity
     guid: 6287f03d07e644504a0419eed888fdf2
+  - enabled: 1
+    path: Assets/Scenes/TitleScene.unity
+    guid: c73a01b46bad24ef691f6315ad76430f
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Scene 1.unity
+    guid: d99828591f12e3543b612ff9a8c785bc
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Scene 2.unity
+    guid: d8db6f588e1901e4982b3ce6e80b4311
+  - enabled: 1
+    path: Assets/Scenes/Boulder Chase.unity
+    guid: 56ccd16ab1c442641b642d3a7211c3df
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ce27a0fbc9f67a248b1117b4cc30aba7, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
