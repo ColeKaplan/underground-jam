@@ -21,11 +21,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check Settings")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private float groundCheckDistance = 0.2f;
 
     private Rigidbody2D rb;
     private InputAction moveAction;
     private InputAction jumpAction;
+    private SpriteRenderer spriteRenderer;
 
     private Vector2 moveInput;
     private bool isGrounded;
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         originalGravity = rb.gravityScale;
         moveAction = InputSystem.actions.FindAction("PlayerMove");
         jumpAction = InputSystem.actions.FindAction("Jump");
@@ -102,12 +104,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckGroundStatus()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
     }
 
     private void ApplyMovement()
     {
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        if (moveInput.x > 0f)
+        {
+            spriteRenderer.flipX = false;
+        } else if(moveInput.x < 0f)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     private void ApplyVariableGravity()

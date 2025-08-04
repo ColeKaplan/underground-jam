@@ -10,7 +10,7 @@ public class Dig : MonoBehaviour
     private Rigidbody2D rb;
     public ContactFilter2D groundFilter; // Set this up in the Inspector to filter by "Ground" layer
 
-    public Collider2D[] colliderArc = new Collider2D[5]; // Adjust size as needed
+    public Collider2D[] colliderArc = new Collider2D[20]; // Adjust size as needed
     private Collider2D[] results = new Collider2D[5];
     public Tilemap tilemap;
 
@@ -35,6 +35,7 @@ public class Dig : MonoBehaviour
     {
         foreach (Collider2D collider in colliderArc)
         {
+            print("collider: " + collider.name);
             int count = collider.Overlap(groundFilter, results);
 
             for (int i = 0; i < count; i++)
