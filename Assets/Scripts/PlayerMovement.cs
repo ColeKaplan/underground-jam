@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check Settings")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private float groundCheckDistance = 0.2f;
 
     private Rigidbody2D rb;
     private InputAction moveAction;
@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = moveAction.ReadValue<Vector2>();
 
+        Debug.Log(coyoteTimeCounter);
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTimeDuration;
@@ -104,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckGroundStatus()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
     }
 
     private void ApplyMovement()
