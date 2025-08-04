@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
@@ -16,6 +17,9 @@ public class Dig : MonoBehaviour
     public GameObject endPos;
     public Tilemap tilemap;
 
+    public AudioClip digSfx;
+
+    private float timer = 1000; // Guarantee first dig triggers it.
 
     void Awake()
     {
@@ -66,11 +70,25 @@ public class Dig : MonoBehaviour
 
             for (int i = 0; i < count; i++)
             {
+                Collider2D hit = results[i];
+
+                // Check if hit object or its parent is the player
+                Transform hitTransform = hit.transform;
+                bool isPlayer = hitTransform.CompareTag("Player") || 
+                                (hitTransform.parent != null && hitTransform.parent.CompareTag("Player"));
+
+                if (isPlayer)
+                    continue; // Skip if it's the player
                 Vector3Int cellPos = tilemap.WorldToCell(collider.transform.position);
                 tilemap.SetTile(cellPos, null);
-
+                if (timer >= digSfx.length)
+                {
+                    AudioManager.Instance.PlaySFX(digSfx, false, 0.5f);
+                    timer = 0;
+                }
             }
         }
+        timer += Time.deltaTime;
     }
 
 
