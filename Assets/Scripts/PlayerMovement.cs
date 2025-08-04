@@ -59,7 +59,6 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = moveAction.ReadValue<Vector2>();
 
-        Debug.Log(coyoteTimeCounter);
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTimeDuration;
