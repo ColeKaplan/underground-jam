@@ -285,6 +285,7 @@ MonoBehaviour:
   - {fileID: 7933643783465222335}
   - {fileID: 3839024846048241785}
   tilemap: {fileID: 0}
+  digSfx: {fileID: 8300000, guid: 9fdb3eca1644e4dea9e7b19b7401aca5, type: 3}
 --- !u!95 &1598146427019563410
 Animator:
   serializedVersion: 7
