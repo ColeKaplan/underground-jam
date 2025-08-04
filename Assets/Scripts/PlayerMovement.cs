@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private InputAction moveAction;
     private InputAction jumpAction;
+    private SpriteRenderer spriteRenderer;
 
     private Vector2 moveInput;
     private bool isGrounded;
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         originalGravity = rb.gravityScale;
         moveAction = InputSystem.actions.FindAction("PlayerMove");
         jumpAction = InputSystem.actions.FindAction("Jump");
@@ -108,6 +110,13 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyMovement()
     {
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        if (moveInput.x > 0f)
+        {
+            spriteRenderer.flipX = false;
+        } else if(moveInput.x < 0f)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     private void ApplyVariableGravity()
