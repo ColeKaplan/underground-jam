@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private float coyoteTimeCounter;
     private float jumpBufferCounter;
     private float originalGravity;
+    private Animator animator;
 
     private void Awake()
     {
@@ -41,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         originalGravity = rb.gravityScale;
         moveAction = InputSystem.actions.FindAction("PlayerMove");
         jumpAction = InputSystem.actions.FindAction("Jump");
+        animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -86,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpBufferCounter = 0f;
+            animator.SetBool("isGrounded", false);
         }
 
         if (jumpAction.WasReleasedThisFrame() && rb.linearVelocity.y > 0f)
@@ -105,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     private void CheckGroundStatus()
     {
         isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+        animator.SetBool("isGrounded", isGrounded);
     }
 
     private void ApplyMovement()
@@ -113,9 +117,18 @@ public class PlayerMovement : MonoBehaviour
         if (moveInput.x > 0f)
         {
             spriteRenderer.flipX = false;
-        } else if(moveInput.x < 0f)
+        } else if (moveInput.x < 0f)
         {
             spriteRenderer.flipX = true;
+        }
+        
+        if (rb.linearVelocity.x < 0.1f && rb.linearVelocity.x > -0.1f)
+        {
+            animator.SetBool("isWalking", false);
+        }
+        else
+        {
+            animator.SetBool("isWalking", true);
         }
     }
 
